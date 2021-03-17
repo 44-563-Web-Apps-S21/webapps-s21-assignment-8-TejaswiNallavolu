@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response page</title>
+</head>
+<body>
+    <div class="Introduction">
+        <h1>Webseries</h1>
+        <h4>To get must watch web series click here</h4>
+        <div>
+            <button onclick="getWebseries()">Get Webseries</button>
+        </div>
+    </div>
+
+    <div id="Webseries"></div>
+    <script>
+        const getWebseries = () => {
+            fetch('http://127.0.0.1:3001').then(
+                (res) => {
+                    console.log(res)
+                    return res.text()
+                }
+            ).then(data => {
+            
+                console.log(data)
+                document.getElementById("Webseries").innerHTML = data
+            }).catch(err => {
+                document.getElementById("Webseries").innerHTML = err
+            })
+        }
+    </script>
+</body>
+</html>
